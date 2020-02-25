@@ -1,0 +1,2778 @@
+SLIP 1 :
+1) Write a java code to get the output as shown below if the user input the String ‘D’.
+A
+B A
+C B A
+D C B A
+import java.util.*;
+class p1
+{
+public static void main(String argsp[])
+{
+Scanner sc = new Scanner(System.in);
+String input;
+System.out.println("Enter : D ");
+input =sc.next();
+chara = 'A';
+if(input.equals("D") || input.equals("d"))
+{
+for(int i = 0; i <4 ; i++)
+{
+int b = i;
+for(int j = 0 ; j<=i ; j++)
+{
+System.out.print((char)(a+b));
+b--;
+}
+System.out.println();
+}
+}
+else
+{
+System.out.println("Enter : D ");
+}
+}
+}
+2) Design a class to represent a bank account. Include the following members:
+DataMembers:
+1) Name of the depositor 2)Account number 3) Type of account(Savings/Current)
+4) Balance amount in theaccount(Minimum balance is Rs.500.00)
+Methods:
+1) To read account number, Depositor name, Type of account
+2)To deposit an amount ( Deposited amount should de added with it)
+3) To withdraw an amount after checking balance(Minimum balance must be Rs.500.00) 4) To display
+the balance
+import java.util.*;
+class bank
+{
+String name,type;
+double accno,balance = 500.0;
+public voidread()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter Account Number : ");
+accno = sc.nextDouble();
+System.out.println("Enter Name of Depositor :");
+name = sc.next();
+System.out.println("Enter Account Type :");
+type = sc.next();
+}
+public voiddeposit(int amt)
+{
+double newbal = balance+ amt;
+System.out.println("Balance Before Deposit : " + balance);
+System.out.println("Balance After Deposit : " + newbal);
+balance = newbal;
+}
+public voidwithdraw(int amt)
+{
+if(balance<500 || amt>500 )
+{
+System.out.println("Insufficient Balance");
+System.out.println("Available Balance is : " +balance);
+}
+else
+{
+double newbal = balance- amt;
+System.out.println("Balance Before Withdrawal : " + balance);
+System.out.println("Balance After Withdrawal : " + newbal);
+balance = newbal;
+}
+}
+public voiddisplay()
+{
+System.out.println("Balance is : " + balance);
+}
+public static void main(String argsp[])
+{
+bank b = new bank();
+Scanner sc = new Scanner(System.in);
+int a,amt;
+do
+{
+System.out.println("Select:\n1 - Enter Account Details \n2 - Deposit \n3 - Withdraw \n4 - Balance \n5-
+Exit");
+a = sc.nextInt();
+switch(a)
+{
+case 1:
+{
+b.read();
+break;
+}
+case 2:
+{
+System.out.println("Enter Deposit Amount : ");
+amt = sc.nextInt();
+b.deposit(amt);
+break;
+}
+case 3:
+{
+System.out.println("Enter Withdrawal Amount : ");
+amt = sc.nextInt();
+b.withdraw(amt);
+break;
+}
+case 4:
+{
+b.display();
+break;
+}
+}
+}while(a!=5);
+}
+}
+SLIP 2 :
+1) Write a java program to calculate area ofrectangle by passing and returning object as a parameter
+import java.util.*;
+class s2
+{
+int l,b;
+void read()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter length and breadth : ");
+l = sc.nextInt();
+b = sc.nextInt();
+}
+void display(s2 s)
+{
+System.out.println("Area of Rectangle is : " + s.l *s.b);
+}
+public static void main(String args[])
+{
+s2 s = new s2();
+s.read();
+s.display(s);
+}
+}
+2) Design an AWT application to calculatethe factorial of anumber
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class factorial extends Frame implements ActionListener
+{
+Button b;
+TextField t;
+Label l1,l2;
+factorial()
+{
+setTitle("Factorial");
+setVisible(true);
+setSize(200,200);
+setLayout(new FlowLayout());
+l1 = new Label("Enter A Number: ");
+l2 = new Label("");
+t = new TextField(10);
+b = new Button("Factorial");
+b.addActionListener(this);
+add(l1);
+add(t);
+add(b);
+add(l2);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+if(AE.getSource() == b)
+{
+int fact = 1;
+String n = t.getText();
+int number = Integer.valueOf(n);
+for(int i = number ; i >= 1 ; i--)
+{
+fact = fact * i;
+}
+String n2 = String.valueOf(fact);
+l2.setText(n2);
+}
+}
+public static void main(String args[])
+{
+factorial f = new factorial();
+}
+}
+Slip 3 :
+1) Write a Java program to create a class Employee with a name & salary. Create a class Manager
+inherited from Employee. Add an instance variable department. Create a class Executiveinherit from
+Manager and add an instance variable location. Write the class definitions, the constructors and
+methods that read and display the information. (NOT SURE PLEASE CONFIRM WITH SOMEONE)
+Filename : Executive.java
+import java.util.*;
+class Employee
+{
+int salary;
+String name;
+Employee()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter Employee Name : ");
+name = sc.next();
+System.out.println("Enter Employee Salary : ");
+salary = sc.nextInt();
+}
+public voiddisp1()
+{
+System.out.println("Employee Name : " + name + "\nSalary : " + salary);
+}
+}
+class Manager extends Employee
+{
+int salary;
+String dept,name;
+Manager()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter Manager Name : ");
+name = sc.next();
+System.out.println("Enter Manager Salary : ");
+salary = sc.nextInt();
+System.out.println("Enter Manager Department ");
+dept = sc.next();
+}
+public voiddisp2()
+{
+disp1();
+System.out.println("Manager Name :" + name + "\nManager Salary : " + salary +
+"\nManager Department : " + dept);
+}
+}
+class Executive extends Manager
+{
+int salary;
+String location,name,dept;
+Executive()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter Executive Name : ");
+name = sc.next();
+System.out.println("Enter Executive Salary: ");
+salary = sc.nextInt();
+System.out.println("Enter Executive Department");
+dept = sc.next();
+System.out.println("Enter Executive Location : ");
+location = sc.next();
+}
+public voiddisp3()
+{
+disp2();
+System.out.println("Executive Name: " + name + "\nExecutive Salary : " + salary +
+"\nExecutive Department : "+ dept +"\nExecutive Location : " + location);
+}
+public static void main(String args[])
+{
+Executive e = new Executive();
+e.disp3();
+}
+}
+2) Design an AWT application to check whether the number entered in textbox is prime or not
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class prime extends Frame implements ActionListener
+{
+Button b;
+TextField t;
+Label l1,l2;
+prime()
+{
+setTitle("Prime Number");
+setVisible(true);
+setSize(400,400);
+setLayout(new FlowLayout());
+l1 = new Label("Enter A Number: ");
+l2 = new Label("");
+t = new TextField(10);
+b = new Button("Check");
+b.addActionListener(this);
+add(l1);
+add(t);
+add(b);
+add(l2);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+int flag = 0;
+int num = Integer.valueOf(t.getText());
+int m = num/2;
+if(AE.getSource() == b)
+{
+for(int i = 2 ; i <= m ; i++)
+{
+if(num%i==0)
+flag = 1;
+else
+flag = 0;
+}
+if(flag == 1)
+l2.setText("Not a Prime Number");
+else
+l2.setText("Prime Number");
+}
+}
+public static void main(String args[])
+{
+prime p = new prime();
+}
+}
+Slip 4 :
+1) Write a Java program that copies content of one file to another. While copying the destination file
+should be an encrypted file. Forexample A is represented as C, B as D, C as E, and D as F and so on.
+import java.util.*;
+import java.io.*;
+class file
+{
+public static void main(String args[])
+{
+try
+{
+FileReader fr = new FileReader("a.txt");
+FileWriter fw = new FileWriter("b.txt");
+BufferedReader br = new BufferedReader(fr);
+String str,str1="";
+while((str = br.readLine())!= null)
+{
+str1 = str;
+}
+char[] n =str1.toCharArray();
+for(int i = 0 ; i < n.length ; i++)
+{
+int n1 = (int)n[i];
+n1 = n1 + 2;
+char n2 = (char)n1;
+fw.write(n2);
+}
+fr.close();
+fw.close();
+}
+catch(Exception e)
+{
+System.out.println("Error : " + e.getMessage());
+}
+}
+}
+2) Design an AWT application to accept anumber from user through textbox and print its reverse.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class reverse extends Frame implements ActionListener
+{
+Button b;
+TextField t;
+Label l1,l2;
+reverse()
+{
+setTitle("Reverse");
+setVisible(true);
+setSize(200,200);
+setLayout(new FlowLayout());
+l1 = new Label("Enter A Number: ");
+l2 = new Label("");
+t = new TextField(10);
+b = new Button("Reverse");
+b.addActionListener(this);
+add(l1);
+add(t);
+add(b);
+add(l2);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+int num = Integer.valueOf(t.getText());
+int rev = 0,rem;
+if(AE.getSource() == b)
+{
+while(num>0)
+{
+rem = num%10;
+rev = rev * 10 + rem;
+num = num/10;
+}
+l2.setText("Reverse is : " + rev);
+}
+}
+public static void main(String args[])
+{
+reverse r = new reverse();
+}
+}
+Slip 5 :
+1) Write a Java code to input height (in inches) and convert it into feet and inches. Display the final
+result in feet and inches. For e.g. if height is 77 inches thenafter conversion it will be 6 feet 5 inches.
+[1 feet=12 inches].
+import java.util.*;
+class convert
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int height,feet,inch;
+System.out.println("Enter Height in Inches : ");
+height = sc.nextInt();
+feet = height/12;
+inch = height%12;
+System.out.println("Height is : " + feet + "ft " + inch + "in");
+}
+}
+2) Write a Java code to implement MouseListener and MouseMotionListener.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class mouse extends Frame implements MouseListener,MouseMotionListener
+{
+Label l1,l2;
+mouse()
+{
+setTitle("Mouse Listeners");
+setVisible(true);
+setSize(200,200);
+setLayout(new FlowLayout());
+l1 = new Label("Click to activate mouseClicked Event");
+l2 = new Label("Click and Drag mouse to activate mouseDragged Event");
+add(l1);
+add(l2);
+addMouseListener(this);
+addMouseMotionListener(this);
+}
+public voidmouseClicked(MouseEvent ME)
+{
+l1.setText("Mouse Clicked");
+}
+public voidmouseExited(MouseEvent ME)
+{}
+public voidmouseEntered(MouseEvent ME)
+{}
+public voidmouseReleased(MouseEvent ME)
+{}
+public voidmousePressed(MouseEvent ME)
+{}
+public voidmouseMoved(MouseEvent ME)
+{}
+public voidmouseDragged(MouseEvent ME)
+{
+l2.setText("Mouse Dragged");
+}
+public static void main(String args[])
+{
+mouse m = new mouse();
+}
+}
+Slip 6 :
+1) Write a Java program to input Basic salary of a person and calculate Net salary in Rs. after
+increasing his salary as per the following criteriaand Display the Net Salary.
+import java.util.*;
+class salary
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+double basic,net;
+System.out.println("Enter Basic Salary : ");
+basic = sc.nextDouble();
+if(basic < 3000)
+{
+net = basic + basic * 0.02;
+System.out.println("Net Salary : " + net);
+}
+else if(basic>= 3000 && basic < 5000)
+{
+net = basic + basic * 0.05;
+System.out.println("Net Salary : " + net);
+}
+else if(basic>= 5000 && basic < 10000)
+{
+net = basic + basic * 0.1;
+System.out.println("Net Salary : " + net);
+}
+else
+{
+net = basic + basic * 0.2;
+System.out.println("Net Salary : " + net);
+}
+}
+}
+2) Write a Java program for multiplying two matrices and print the product for thesame.
+import java.util.*;
+class mult
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int a[][] = new int[2][2];
+int b[][] = new int[2][2];
+int c[][] = new int[2][2];
+int i,j,k;
+System.out.println("Enter elements for 1st Matrix : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j < 2 ;j++)
+{
+a[i][j] = sc.nextInt();
+}
+}
+System.out.println("Enter elements for 2nd Matrix : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j < 2 ;j++)
+{
+b[i][j] = sc.nextInt();
+}
+}
+System.out.println("Product of Matrices : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j < 2 ;j++)
+{
+for(k = 0 ; k < 2 ; k++)
+{
+c[i][j] = c[i][j] + (a[i][k]*b[k][j]);
+}
+}
+}
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j < 2; j++)
+{
+System.out.print(c[i][j]+" ");
+}
+System.out.println();
+}
+}
+}
+Slip 7 :
+1) Write a Java program that translates a lettergrade into a number grade. Letter grades are A, B, C, D,
+and F possibly followed by + or -. Their numeric values are 4,3,2,1 and 0. There is noF+ and F-. +
+increases the value by 0.3and – decreases the value by 0.3. However A+ has the value as 4.0 only.
+For example
+Enterthe grade: B
+The numeric value is : 2.7
+import java.util.*;
+class grade
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+String g,g1;
+float a = 4 , b = 3 , c = 2 , d = 1, f = 0;
+System.out.println("Enter your Grade : ");
+g = sc.next();
+g1 = g.toUpperCase();
+if(g1.equals("A") || g1.equals("A+"))
+{
+System.out.println("The numeric value is : " + a);
+}
+else if(g1.equals("A-"))
+{
+float r = a - 0.3f;
+System.out.println("The numeric value is : " + r);
+}
+else if(g1.equals("B+"))
+{
+float r = b + 0.3f;
+System.out.println("The numeric value is : " + r);
+}
+else if(g1.equals("B-"))
+{
+float r = b -0.3f;
+System.out.println("The numeric value is : " + r);
+}
+else if(g1.equals("C+"))
+{
+float r = c + 0.3f;
+System.out.println("The numeric value is : " + r);
+}
+else if(g1.equals("C-"))
+{
+float r = c - 0.3f;
+System.out.println("The numeric value is : " + r);
+}
+else if(g1.equals("D+"))
+{
+float r = d + 0.3f;
+System.out.println("The numeric value is : " + r);
+}
+else if(g1.equals("D-"))
+{
+float r = d -0.3f;
+System.out.println("The numeric value is : " + r);
+}
+else if(g1.equals("F") || g1.equals("F+") || g1.equals("F-"))
+{
+System.out.println("The numeric value is : " + f);
+}
+else if(g1.equals("A"))
+{
+System.out.println("The numeric value is : " + a);
+}
+else if(g1.equals("B"))
+{
+System.out.println("The numeric value is : " + b);
+}
+else if(g1.equals("C"))
+{
+System.out.println("The numeric value is : " + c);
+}
+else if(g1.equals("D"))
+{
+System.out.println("The numeric value is : " + d);
+}
+else
+{
+System.out.println("Invalid Input");
+}
+}
+}
+2) Write a Java program to merge the contents of two file into a single file.
+import java.util.*;
+import java.io.*;
+class merge
+{
+public static void main(String args[])
+{
+try
+{
+FileReader fr1 =new FileReader("a.txt");
+FileReader fr2 =new FileReader("b.txt");
+FileWriter fw = new FileWriter("c.txt");
+BufferedReader br1= new BufferedReader(fr1);
+BufferedReader br2= new BufferedReader(fr2);
+String s1,s2,s3="",s4="";
+while((s1 = br1.readLine()) != null)
+{
+s3 = s1 ;
+}
+while((s2 = br2.readLine()) != null)
+{
+s4 = s2;
+}
+String s5 = s3 + "" + s4;
+fw.write(s5);
+fr1.close();
+fr2.close();
+fw.close();
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+Slip 8 :
+1) Create a class player as follows:-
+Datamembers:-
+pname(String),innings(int),runs(int),notouts(int)
+Methods:-
+i) void showdata() – to display the details of player.
+ii) Void calcAvg()– to calculate batting average of player as follows:- Bat. Avg= runs/(inningsnotouts);
+Write a Java program to create an object of class Player to input player details and invoke all its
+methods.
+import java.util.*;
+class Player
+{
+String pname;
+int innings,runs, notouts;
+Player(String n , int i , int r , int no)
+{
+pname= n;
+innings = i;
+runs = r;
+notouts = no;
+}
+public void showdata()
+{
+System.out.println("Player Name : " + pname + "\nRuns Scored : " + runs + "\nInnings Played : "
++ innings + "\nNotOuts : " + notouts);
+}
+public void calcAvg()
+{
+int BatAvg = runs/(innings-notouts);
+System.out.println("Batting Average is : " + BatAvg);
+}
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+String name;
+int in,r,no;
+System.out.println("Enter Player Name : ");
+name = sc.next();
+System.out.println("Enter Number Of Innings : ");
+in = sc.nextInt();
+System.out.println("Enter Runs : ");
+r = sc.nextInt();
+System.out.println("Enter Number Of NotOuts : ");
+no = sc.nextInt();
+Player p = new Player(name,in,r,no);
+p.showdata();
+p.calcAvg();
+}
+}
+2) Write a Java program to implement KeyListener.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class key extends Frame implements KeyListener
+{
+Label l;
+key()
+{
+setTitle("Key Listener");
+setVisible(true);
+setLayout(new FlowLayout());
+setSize(400,400);
+l = new Label("Press a Key onKeyboard to Activate KeyPressed");
+add(l);
+addKeyListener(this);
+}
+public void keyReleased(KeyEvent KE)
+{}
+public void keyPressed(KeyEvent KE)
+{
+l.setText("Key Pressed");
+}
+public void keyTyped(KeyEvent KE)
+{}
+public static void main(String args[])
+{
+key k = newkey();
+}
+}
+Slip 9 :
+1) Write a Java program to accept thecredit card type and shopping amount from the user and then
+display the Net Price as Net Price= Shopping Amount – Discount.
+import java.util.*;
+class credit
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+String card;
+double amt,net;
+System.out.println("Enter Card Type : ");
+card = sc.next();
+System.out.println("Enter Shopping Amount : ");
+amt = sc.nextDouble();
+if(card.equals("VISA") || card.equals("visa") && amt < 5000)
+{
+net = amt -amt * 0.1;
+System.out.println("Net Price : " + net);
+}
+else if(card.equals("VISA") || card.equals("visa") && amt >= 5000)
+{
+net = amt -amt * 0.2;
+System.out.println("Net Price : " + net);
+}
+else if(card.equals("XYZ") || card.equals("xyz") && amt < 10000)
+{
+net = amt -amt * 0.15;
+System.out.println("Net Price : " + net);
+}
+else if(card.equals("XYZ") || card.equals("xyz") && amt >= 10000)
+{
+net = amt -amt * 0.25;
+System.out.println("Net Price : " + net);
+}
+else if(card.equals("ABC") || card.equals("abc") && amt< 8000)
+{
+net = amt -amt * 0.12;
+System.out.println("Net Price : " + net);
+}
+else if(card.equals("ABC") || card.equals("abc") && amt>= 8000)
+{
+net = amt -amt * 0.15;
+System.out.println("Net Price : " + net);
+}
+else
+{
+System.out.println("Net Price : " + amt);
+}
+}
+}
+2) Write a Java program to convert a decimal number to binary number.
+import java.util.*;
+class decimal
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int num;
+System.out.println("Enter a Number : ");
+num = sc.nextInt();
+System.out.println("Binary Equivalent : " + Integer.toBinaryString(num));
+}
+}
+OR
+Scanner sc = new Scanner(System.in);
+int num, i= 0;
+System.out.println("Enter a Number : ");
+num = sc.nextInt();
+int a[] = new int[num];
+while(num>0)
+{
+a[i++] = num % 2;
+num = num / 2;
+}
+for(int j = i - 1 ; j >= 0 ; j--)
+{
+System.out.print(a[j]);
+}
+Slip 10 :
+1) Write a java program to input two numbers x and y and count total number of prime numbers
+between x and y.
+For example if x=1 and y=10 then o/p is 4.
+import java.util.*;
+class primerange
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int x,y,count = 0;
+System.out.println("Enter X : ");
+x = sc.nextInt();
+System.out.println("Enter Y : ");
+y = sc.nextInt();
+while(x<y)
+{
+for(int i = 2 ; i <= x/2 ; i++)
+{
+if(x % i == 0)
+break;
+count++;
+}
+x++;
+}
+System.out.println("Number of Prime Nos :" + count);
+}
+}
+2) Write a Java Program to find the largest and smallest element from an array.
+import java.util.*;
+class largesmall
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int i,large,small;
+int a[] = new int[5];
+System.out.println("Enter 5 elements in array :");
+for(i = 0 ; i < 5 ; i++)
+{
+a[i] = sc.nextInt();
+}
+large = small =a[0];
+for(int j = 1 ; j < 5; j++)
+{
+if(a[j] > large)
+large = a[j];
+if(a[j] < small)
+small = a[j];
+}
+System.out.println("Smallest " + small);
+System.out.println("Largest " + large);
+}
+}
+Slip 11 :
+1) Write a Java program to create a class account with
+attributes acc_no, name and balance.
+Initialize the values through parameterized constructor.
+If balance between 1000and 5000 generate a user defined exception “Balancewithin the range”.
+import java.util.*;
+import java.io.*;
+class exception extends Exception
+{
+exception(String s1)
+{
+super(s1);
+}
+}
+class account
+{
+int acc_no,balance;
+String name;
+account(int ano , int bal, String n)
+{
+acc_no = ano;
+balance = bal;
+name = n;
+try
+{
+if(balance >= 1000 && balance <= 5000)
+throw new exception("Balance Within Range");
+else
+System.out.println("Name : " +name + "\nAccount Number : "+ acc_no+ "\nBalance : "+balance);
+}
+catch(exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+public static void main(String args[])
+{
+account a = new account(12345 , 3000 , "ABC");
+}
+}
+2) Write a Java AWT program to accept a number from user (TextBox) and display the cube of the
+number.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class cube extends Frame implements ActionListener
+{
+Button b;
+TextField t;
+Label l1,l2;
+cube()
+{
+setTitle("Cube");
+setVisible(true);
+setSize(400,400);
+setLayout(new FlowLayout());
+l1 = new Label("Enter A Number: ");
+l2 = new Label("");
+t = new TextField(10);
+b = new Button("Cube");
+b.addActionListener(this);
+add(l1);
+add(t);
+add(b);
+add(l2);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+if(AE.getSource() == b)
+{
+String n = t.getText();
+int number = Integer.valueOf(n);
+int c = number * number * number;
+String n2 = String.valueOf(c);
+l2.setText("Cube is : " + n2);
+}
+}
+public static void main(String args[])
+{
+cube c = new cube();
+}
+}
+Slip 12 :
+1) Define a class Electbill that containsconsumer details asfollows:-
+Data members/Instance variable :
+cno (long) //consumer number
+cname (String)// consumer name
+cadd (String) // consumer address
+NOU(long) // to store number of units consumed
+Member functions / Methods :
+(i)Electbill() : Parameterised constructor to assign values to consumer number,consumer name and
+address
+(ii) void display(): Display consumers details
+(iii) void calculate() : Calculate the monthly bill of consumer according to following slabs and it should
+also display the total amount to bepaid.
+import java.util.*;
+class Electbill
+{
+long cno,NOU;
+String cname,cadd;
+Electbill(long c ,String name, String add)
+{
+cno = c;
+cname = name;
+cadd = add;
+}
+voiddisplay()
+{
+System.out.println("Customer Details : ");
+System.out.println("Name : " + cname + "\nCustomer Number : " + cno + "\nAddress :"+cadd);
+}
+voidcalculate(long N)
+{
+display();
+NOU = N;
+double amt = 500;
+if(NOU >= 1 && NOU <= 100)
+{
+System.out.println("Total amount to be paid: " + amt);
+}
+if(NOU >= 101 && NOU <= 200)
+{
+amt = NOU + amt ;
+System.out.println("Total amount to be paid : " + amt);
+}
+if(NOU >= 201 && NOU <= 300)
+{
+amt = amt + (1.20 * NOU);
+System.out.println("Total amount to be paid : " + amt);
+}
+if(NOU >= 300)
+{
+amt = amt + (1.50 * NOU);
+System.out.println("Total amount to be paid : " + amt);
+}
+}
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+long no,nou;
+String name,add;
+System.out.println("Enter Cno : " );
+no = sc.nextLong();
+System.out.println("Enter Cname :");
+name = sc.next();
+System.out.println("Enter Caddress : " );
+add = sc.next();
+System.out.println("Enter NOU consumed :" );
+nou = sc.nextLong();
+Electbill e= new Electbill(no,name,add);
+e.calculate(nou);
+}
+}
+2) Write a Java program that prompts the user(using Buffered Reader) for a radius and then prints a.
+Areaand Circumference of the circle with that radius b. Volume ((4/3)*Pi*R3) )and Surface
+Area(4*Pi*R2 ) of the sphere with that radius.
+import java.util.*;
+import java.io.*;
+class circle
+{
+public static void main(String args[])
+{
+try
+{
+InputStreamReader isr = new InputStreamReader(System.in);
+BufferedReader br = newBufferedReader(isr);
+double radius,area,c,vol,sa;
+System.out.println("Enter Radius : ");
+radius = Double.valueOf(br.readLine());
+area = 3.142 * radius * radius;
+c = 2 * 3.142 * radius;
+System.out.println("Radius : " + radius +"\nArea : " + area + "\nCircumference : " + c);
+vol = (4 *3.142 * radius * radius * radius) / 3;
+sa = 4* 3.142 * radius * radius;
+System.out.println("Volume Of Sphere : " + vol + "\nSurface Area of Sphere : " + sa);
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+Slip 13 :
+1) Write a Java program that prompts the users for2 integers using command line argument and then
+prints (i) sum (ii) difference (iii) product (iv) average (v) maximum (vi) minimum. Write methods to
+calculate the same.
+import java.util.*;
+class num
+{
+public void sum(int a, int b)
+{
+System.out.println("Sum is : " + (a+b));
+}
+public void diff(int a, int b)
+{
+System.out.println("Difference is : " + (a-b));
+}
+public void product(int a, int b)
+{
+System.out.println("Product is : " + (a*b));
+}
+public void avg(int a, int b)
+{
+System.out.println("Average is : " + (a+b)/2);
+}
+public void max(int a, int b)
+{
+if(a > b)
+System.out.println("Maximum is : " + a);
+else
+System.out.println("Maximum is : " + b);
+}
+public void min(int a,int b)
+{
+if(a > b)
+System.out.println("Minimum is: " + b);
+else
+System.out.println("Minimum is: " + a);
+}
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+num n = new num();
+int a,b;
+System.out.println("Enter 2 integer nos : ");
+a = sc.nextInt();
+b = sc.nextInt();
+n.sum(a,b);
+n.diff(b,a);
+n.product(a,b);
+n.avg(a,b);
+n.max(a,b);
+n.min(a,b);
+}
+}
+2) Write an AWT Programto design the Following GUI.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class marks extends Frame implements ActionListener
+{
+Button b;
+TextField t1,t2;
+Label l1;
+marks()
+{
+setTitle("Marks");
+setVisible(true);
+setSize(300,300);
+setLayout(new GridBagLayout());
+GridBagConstraints gbc = new GridBagConstraints();
+l1 = new Label("Enter your marks % : ");
+gbc.gridx = 0;
+gbc.gridy = 0;
+add(l1,gbc);
+t1 = new TextField(10);
+gbc.gridx = 1;
+gbc.gridy = 0;
+add(t1,gbc);
+t2 = new TextField(30);
+gbc.gridx = 1;
+gbc.gridy = 2;
+t2.setEditable(false);
+add(t2,gbc);
+b = new Button("Calculate Grade");
+gbc.gridx = 0;
+gbc.gridy = 1;
+gbc.gridwidth = 2;
+b.addActionListener(this);
+add(b,gbc);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+int marks = Integer.valueOf(t1.getText());
+if(AE.getSource() == b)
+{
+if(marks >= 60)
+t2.setText("A++");
+else if(marks >=45 && marks < 60)
+t2.setText("B");
+else if(marks >=33 && marks < 45)
+t2.setText("C");
+else if(marks < 33)
+t2.setText("F");
+else
+t2.setText("Invalid");
+}
+}
+public static void main(String args[])
+{
+marks m = new marks();
+}
+}
+Slip 14 :
+1) Write a java program to input a number from user and print the sum ofits odd factors only.
+Example: - If number is 36 then its factorsare 1,2,3,4,6,9,12,18 and sum of its odd factors is 1+3+9=13
+import java.util.*;
+class factor
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int num, sum = 0;
+System.out.println("Enter a number :");
+num = sc.nextInt();
+for(int i = 1; i <= num ; i++)
+{
+if(num % i == 0)
+{
+int factor =i ;
+if(factor % 2 == 1)
+sum = sum + factor;
+}
+}
+System.out.println("Sum of odd Factors is : " + sum);
+}
+}
+2) Write a java Program toinput any digit number and print the sum of only its even digits. Example:
+2354=2+4=6.
+import java.util.*;
+class even
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int num,rem, sum = 0;
+System.out.println("Enter a number :" );
+num = sc.nextInt();
+while(num > 0)
+{
+rem = num%10;
+num = num/10;
+if(rem % 2 == 0)
+sum = sum + rem;
+}
+System.out.println("Sum of Even Digits : " + sum);
+}
+}
+Slip 15 :
+1) Design an abstract class called Shape which has three subclasses say Triangle, Rectangle, and Circle.
+Define one method area ()in the abstract class and override this area () inthese three subclassesto
+calculate for specific object i.e. area () of Triangle subclass should calculate area of triangle etc. Same
+for Rectangle and Circle.
+Filename : Triangle.java
+import java.util.*;
+abstractclass Shape
+{
+abstract public void area();
+}
+class Rectangle extends Shape
+{
+public void area()
+{
+Scanner sc = new Scanner(System.in);
+double l,b;
+System.out.println("Enter Length : ");
+l = sc.nextDouble();
+System.out.println("Enter Breadth : ");
+b = sc.nextDouble();
+double a = l * b;
+System.out.println("Area of Rectangle is : " + a);
+}
+}
+class Circle extends Shape
+{
+public void area()
+{
+Scanner sc = new Scanner(System.in);
+double r;
+System.out.println("Enter Radius : ");
+r = sc.nextDouble();
+double a = 3.142 * r * r;
+System.out.println("Area of Circle is : " + a);
+}
+}
+class Triangle extends Shape
+{
+public void area()
+{
+Scanner sc = new Scanner(System.in);
+double b,h;
+System.out.println("Enter Base : ");
+b = sc.nextDouble();
+System.out.println("Enter Height : ");
+h = sc.nextDouble();
+double a = 0.5 * b *h;
+System.out.println("Area of Circle is : " + a);
+}
+public static void main(String args[])
+{
+Rectangle r = new Rectangle();
+r.area();
+Circle c =new Circle();
+c.area();
+Triangle t = new Triangle();
+t.area();
+}
+}
+2) Write a java program for multiplying two matrices and print the product for the same.
+Same as Slip 6 – 2
+Slip 16 :
+1) Create a class "Employee" as follows:-
+Instance variables:- empno(long), empname(String), job(String)
+Methods:-
+i) void showinfo() - to display details of employee.
+Create another class "Salary" that inherits fromclass"Employee" as follows:-
+Instance variables:- basic(double), newsal(double)
+Methods:-
+i) void calculate(double perc) – that takes percentage amount “perc” as argument and calculates
+newsalary by incrementingthe basic salary by that percentage amount.
+ii) void dispdata() – to display basic salary.
+Write a Java program to create an object of class Salary to input details of employee and also invoke
+showinfo(), calculate() and dispdata() methods.
+Filename : salary.java
+import java.util.*;
+class Employee
+{
+long empno;
+String empname, job;
+public void showinfo(String en, String j, long n)
+{
+empname = en;
+empno =n;
+job = j;
+System.out.println("Name : " + empname + "\nEmp No : " + empno + "\nJob :" + job);
+}
+}
+class salary extends Employee
+{
+double basic, newsal;
+public voidcalculate(double b , double perc)
+{
+basic =b;
+newsal = basic + basic * (perc/100);
+}
+public voiddispdata()
+{
+System.out.println("Basic Salary : " + basic + " New Salary : " + newsal);
+}
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+long eno;
+String n,j;
+System.out.println("Enter Name : ");
+n = sc.next();
+System.out.println("Enter EmpNo : ");
+eno =sc.nextLong();
+System.out.println("Enter Job : ");
+j = sc.next();
+salary s = new salary();
+s.showinfo(n,j,eno);
+System.out.println("Enter Basic Salary : ");
+double b = sc.nextDouble();
+System.out.println("Enter Increase % : ");
+double p = sc.nextDouble();
+s.calculate(b,p);
+s.dispdata();
+}
+}
+2) Write a Java program for generating 4 threads to do the following operations.
+(a)getting n numbers
+(b)printing even numbers
+(c)printing odd numbers
+(d)printing square of a numbers
+Filename : threadprog.java
+import java.util.*;
+class thread1 extends Thread
+{
+public voidrun()
+{
+System.out.println("GettingN Numbers ");
+int a;
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter a Number : " );
+a = sc.nextInt();
+try
+{
+for(int i = 0 ; i <= a ; i++)
+{
+System.out.println(i);
+Thread.sleep(10);
+}
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+class thread2 extends Thread
+{
+public voidrun()
+{
+System.out.println();
+System.out.println("Even Numbers ");
+int a;
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter a Number : " );
+a = sc.nextInt();
+try
+{
+for(int i = 0 ; i <= a ; i++)
+{
+if(i % 2 == 0)
+System.out.println(i);
+}
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+class thread3 extends Thread
+{
+public voidrun()
+{
+System.out.println();
+System.out.println("Odd Numbers");
+int a;
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter a Number : " );
+a = sc.nextInt();
+try
+{
+for(int i = 0 ; i <= a ; i++)
+{
+if(i % 2 == 1)
+System.out.println(i);
+}
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+class thread4 extends Thread
+{
+public voidrun()
+{
+int a;
+Scanner sc = new Scanner(System.in);
+System.out.println();
+System.out.println("Square Of Numbers :");
+System.out.print("Enter a Number : " );
+a = sc.nextInt();
+try
+{
+for(int i = 1 ; i <= a ; i++)
+{
+int p = i * i;
+System.out.println(p);
+}
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+class threadprog extends Thread
+{
+public static void main(String args[])
+{
+try
+{
+thread1 t1 =new thread1();
+t1.start();
+t1.join();
+thread2 t2 =new thread2();
+t2.start();
+t2.join();
+thread3 t3 =new thread3();
+t3.start();
+t3.join();
+thread4 t4 =new thread4();
+t4.start();
+t4.join();
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+Slip 17 :
+1) Write a Java program to multiply two matrices. Before multiplication the matrices should be
+checked whether they can be multiplied ornot.
+import java.util.*;
+class check
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int a1,a2,b1,b2;
+System.out.println("How many rows and cols for matrix 1 : ");
+a1 = sc.nextInt();
+a2 = sc.nextInt();
+System.out.println("How many rows and cols for matrix 2 : ");
+b1 = sc.nextInt();
+b2 = sc.nextInt();
+int a[][] = new int[a1][a2];
+int b[][] = new int[b1][b2];
+if(a2 == b1)
+{
+System.out.println("Multiplication Possible");
+int c[][] = new int[a1][b2];
+int i,j,k;
+System.out.println("Enter elements for 1st Matrix : ");
+for(i = 0 ; i < a1 ; i++)
+{
+for(j = 0 ; j < a2; j++)
+{
+a[i][j] = sc.nextInt();
+}
+}
+System.out.println("Enter elements for 2nd Matrix : ");
+for(i = 0 ; i < b1 ; i++)
+{
+for(j = 0 ; j < b2 ; j++)
+{
+b[i][j] = sc.nextInt();
+}
+}
+System.out.println("Product of Matrices : ");
+for(i = 0 ; i < a1 ; i++)
+{
+for(j = 0 ; j < b2 ; j++)
+{
+for(k = 0 ; k < b1; k++)
+{
+c[i][j] = c[i][j] +(a[i][k]*b[k][j]);
+}
+}
+}
+for(i = 0 ; i < a1 ; i++)
+{
+for(j = 0 ; j < b2 ; j++)
+{
+System.out.print(c[i][j]+" ");
+}
+System.out.println();
+}
+}
+else
+{
+System.out.println("Multiplication Not Possible");
+}
+}
+}
+2) Write a method in Java thattakestwo integer arguments and returns power of it. Suppose x and y
+passing as an argument(using call by reference) then it returns x to power y after calculation.
+import java.util.*;
+class number
+{
+double x,y;
+}
+class refer
+{
+public static void power(number x1, number y1)
+{
+x1.x = Math.pow(x1.x,y1.y);
+System.out.println("X to the power Y is : " + x1.x);
+}
+public static void main(String args[])
+{
+number n1 = new number();
+n1.x = 2;
+number n2 = new number();
+n2.y = 3;
+power(n1,n2);
+}
+}
+Slip 18 :
+1) Define 2 packages (i) Prime (ii) Factorial. Write a Java program to create a class PrimeFact to import
+these packages.
+Filename : PrimeFact.java
+PACKAGE PRIMENO:
+package v50;
+public class primeno
+{
+public void check(int a)
+{
+int flag = 0;
+for(int i = 2 ; i < a/2 ; i++)
+{
+if(a % i == 0)
+{
+flag = 1;
+break;
+}
+}
+if(flag== 1)
+System.out.println(a + " is not a PrimeNumber");
+else
+System.out.println(a + " is Prime Number");
+}
+}
+PACKAGE FACTORIAL:
+package v50;
+public class f
+{
+public void fact(int a)
+{
+int f1 = 1;
+for(int i = a ; i > 0 ; i--)
+{
+f1 = f1 * i ;
+}
+System.out.println("Factorial is : " + f1);
+}
+}
+CLASSPRIMEFACT:
+import java.util.*;
+import v50.*;
+class PrimeFact
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int a;
+System.out.println("Enter a Number : " );
+a = sc.nextInt();
+primeno p = new primeno();
+p.check(a);
+int b;
+System.out.println("Enter a Number : " );
+b = sc.nextInt();
+f c = new f();
+c.fact(b);
+}
+}
+2) Write a java program to copy thecontents from one file to other file.
+import java.util.*;
+import java.io.*;
+class copy
+{
+public static void main(String args[])
+{
+try
+{
+FileReader fr = new FileReader("a.txt");
+FileWriter fw = newFileWriter("b.txt");
+BufferedReader br = new BufferedReader(fr);
+String str;
+while((str = br.readLine())!= null)
+{
+fw.write(str);
+}
+fw.close();
+fr.close();
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+Slip 19 :
+1) Define a class Travel with the following descriptions :
+Datamembers/Instance variable :
+TravelCode(long),Place(string),No_of_travellers(int),No_of_buses(integer)
+Member functions / Methods :
+i) A constructor to assign initialvalues of TravelCode as 201, Place as “Nainital”, No_of_travellers as
+10, No_of_buses as 1
+ii)Amethod NewTravel() which allows user to enter TravelCode, Place and No_of_travellers through
+arguments. Also, assign the value of No_of_buses as per the following conditions :
+iii) A method ShowTravel( ) to display the content of all the data members on screen. WAP to create
+an object of class Travel and invoke all its methods
+import java.util.*;
+class Travel
+{
+long TravelCode;
+String Place;
+int not, nob;
+Travel()
+{
+TravelCode = 201;
+Place = "Nainital";
+not = 10;
+nob = 1;
+}
+public void NewTravel()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter Travel Code : ");
+TravelCode = sc.nextLong();
+System.out.println("Enter Place : ");
+Place = sc.next();
+System.out.println("Enter No.of Travellers : ");
+not = sc.nextInt();
+if(not < 20)
+nob = 1;
+else if(not >= 20 && not <40)
+nob = 2;
+else if(not >= 40)
+nob = 3;
+}
+public void ShowTravel()
+{
+System.out.println("Travel Code : " + TravelCode + "\nPlace " +Place + "\nNo. of Travellers : " +
+not + "\nNo. of Buses : " + nob);
+}
+public static void main(String args[])
+{
+Travel t = new Travel();
+t.NewTravel();
+t.ShowTravel();
+}
+}
+2) Write a Java program to accept a sentence from user using command line argument and store it ina
+file data.txt
+import java.util.*;
+import java.io.*;
+class sentence
+{
+public static void main(String args[])
+{
+try
+{
+FileOutputStream fos = new FileOutputStream("data.txt");
+Scanner sc = new Scanner(System.in);
+String str;
+System.out.println("Enter a sentence : ");
+str = sc.nextLine();
+byte b[] = str.getBytes();
+fos.write(b);
+fos.close();
+}
+catch(Exception e)
+{
+System.out.println("Error : " + e.getMessage());
+}
+}
+}
+Slip 20 :
+1) Write a Java program that translates a number between 0 to 4 into the letter grades as F, D, C,B
+and A. For example if the number entered is2.8 then grade is B and if number entered is 2.3 then
+grade would be C.
+import java.util.*;
+class translate
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+double a;
+System.out.println("Enter number between 0-4: ");
+a = sc.nextDouble();
+if( a >= 3.1 && a <= 4.0)
+System.out.println("Grade A");
+else if(a >= 2.6 &&a <= 3.0)
+System.out.println("Grade B");
+else if(a >= 2.1 &&a <= 2.5)
+System.out.println("Grade C");
+else if(a >= 1.5 &&a <= 2.0)
+System.out.println("Grade D");
+else if(a > 0 && a< 1.5)
+System.out.println("Grade E");
+else
+System.out.println("Invalid");
+}
+}
+2) Write a Java AWT program to calculate area of Rectangle
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class areaRect extends Frame implements ActionListener
+{
+Button b1;
+TextField t1,t2;
+Label l1,l2,l3;
+areaRect()
+{
+setTitle("Area Of Rectangle");
+setVisible(true);
+setSize(400,400);
+setLayout(new FlowLayout());
+l1 = new Label("Enter Length: ");
+l2 = new Label("Enter Breadth");
+l3 = new Label("");
+t1 = new TextField(10);
+t2 = new TextField(10);
+b1 = new Button("Area");
+b1.addActionListener(this);
+add(l1);
+add(t1);
+add(l2);
+add(t2);
+add(b1);
+add(l3);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+int l = Integer.valueOf(t1.getText());
+int b = Integer.valueOf(t2.getText());
+if(AE.getSource() == b1)
+{
+int area = l * b;
+l3.setText(String.valueOf(area));
+}
+}
+public static void main(String args[])
+{
+areaRect a = new areaRect();
+}
+}
+Slip 21 :
+1) Write a Java program to create a class student with attributes roll no, name, age and course.
+Initialize values through parameterized constructor. If ageis not between 15 and 21 then generate a
+user defined exception “Age not within the range”.
+import java.util.*;
+import java.io.*;
+class exception extends Exception
+{
+exception(String s1)
+{
+super(s1);
+}
+}
+class student
+{
+int rollno,age;
+String name,course;
+student(int rno , int a , String n , String c)
+{
+rollno = rno;
+age = a;
+name = n;
+course = c;
+try
+{
+if(age >= 15 && age <= 21)
+System.out.println("Name : " + name + "\nRoll Number : " + rollno + "\nAge : " + age +
+"\nCourse: " + course);
+else
+throw new exception("Age not within the range");
+}
+catch(exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+public static void main(String args[])
+{
+student s = new student(50 , 10 , "ABC" , "BscIT");
+}
+}
+2) Write a Java program to sort the array in ascending and descending order.
+import java.util.*;
+class ascdesc
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter size of Array : ");
+int n = sc.nextInt();
+int a[] = new int[n];
+System.out.println("Enter " + n + " elements");
+int i,j,temp;
+for(i = 0 ; i < n ;i++)
+{
+a[i] = sc.nextInt();
+}
+for(i = 0 ; i < n ;i++)
+{
+for(j = i + 1 ; j < n ; j++)
+{
+if(a[i] > a[j])
+{
+temp = a[i];
+a[i] = a[j];
+a[j] = temp;
+}
+}
+}
+System.out.println("Ascending Order : ");
+for(i = 0 ; i < n ;i++)
+System.out.print(a[i]+ " ");
+for(i = 0 ; i < n ;i++)
+{
+for(j = i + 1 ; j <n ; j++)
+{
+if(a[i] < a[j])
+{
+temp = a[i];
+a[i] =a[j];
+a[j] =temp;
+}
+}
+}
+System.out.println("Descending Order : ");
+for(i = 0 ; i < n ; i++)
+System.out.print(a[i]+" ");
+}
+}
+Slip 22 :
+1) Define 3 packages Rectangle, Square and Triangleeachhaving area of their respective shape.
+Create a class ShapeDemo importing these 3 packages and displayingthe area of rectangle, square
+and triangle
+SIMILAR TO SLIP 18 – 1
+2) Write a Java program to convert digit into words.(E.g.: 12 One Two)
+import java.util.*;
+class numword
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+String words[] = new String[10];
+words[0] = "Zero";
+words[1] = "One";
+words[2] = "Two";
+words[3] = "Three";
+words[4] = "Four";
+words[5] = "Five";
+words[6] = "Six";
+words[7] = "Seven";
+words[8] = "Eight";
+words[9] = "Nine";
+int num,rem;
+String conv = "";
+System.out.println("Enter a Number : ");
+num = sc.nextInt();
+for(int i = num; i > 0 ; i =i/10)
+{
+rem = i%10;
+conv = words[rem] + " " + conv;
+}
+System.out.println(conv);
+}
+}
+Slip 23 :
+1) Define a class TOUR asfollows:-
+Private Members:- Tcode(string),Noofadults(int),Noofkids(int),kilometres(int),totFare(float)
+Public:
+i) A constructor to assign initialvalues as follows:- Tcode with the word “NULL”,
+Nofadults,Noofkids,kilometres & totfare with zero.
+ii) A function AssignFare() which calculates and assigns the value of data members TotFare as
+follows:-
+iii) EnterTour()to inputvalues for Tcode, Nofoadults,Noofkidsand kilometres through arguments.
+ShowTour() to display the details of all the data members along with total fare.
+import java.util.*;
+class TOUR
+{
+private String Tcode;
+private intNoofadults, Noofkids ,kilometres;
+private float totFare;
+public TOUR()
+{
+Tcode = null;
+Noofadults = Noofkids = kilometres = 0;
+totFare = 0f;
+}
+public void AssignFare()
+{
+if(kilometres >=1000)
+totFare = (500 * Noofadults) + (250* Noofkids);
+else if(kilometres >= 500 && kilometres < 1000)
+totFare = (300 * Noofadults) + (150 * Noofkids);
+else if(kilometres < 500)
+totFare = (200 * Noofadults) + (100 * Noofkids);
+else
+System.out.println("Invalid");
+}
+public void EnterTour(String t , int na, int nk, int k)
+{
+Tcode = t;
+Noofadults = na;
+Noofkids = nk;
+kilometres = k;
+}
+public void ShowTour()
+{
+System.out.println("Tcode : " + Tcode + "\nNo. of Adults : " +Noofadults + "\nNo. of Kids : " +
+Noofkids + "\nKilometres : " + kilometres + "\nTotal Fare: " + totFare);
+}
+public static void main(String args[])
+{
+TOUR t = new TOUR();
+Scanner sc = new Scanner(System.in);
+String tc;
+int na,nk,k;
+System.out.println("Enter Tcode : ");
+tc = sc.next();
+System.out.println("Enter No.of Adults :");
+na =sc.nextInt();
+System.out.println("Enter No.of Kids : ");
+nk = sc.nextInt();
+System.out.println("Enter No.of Kms: ");
+k = sc.nextInt();
+t.EnterTour(tc,na,nk,k);
+t.AssignFare();
+t.ShowTour();
+}
+}
+2) Write a Java program that accepts two strings as command line arguments. It checks for the
+number of command line arguments. If they are less or more it throws a userdefined exception else it
+will display the strings.
+After compiling -> type the string using space after command java filename-> enter
+Eg.
+javac filename.java -> enter -> java filename hello world -> enter
+import java.util.*;
+import java.io.*;
+class exception extends Exception
+{
+exception(String s1)
+{
+super(s1);
+}
+}
+class string
+{
+public static void main(String args[])
+{
+try
+{
+int count = 0;
+for(int i = 0 ; i < args.length ; i++)
+count++;
+System.out.println("Number of command line arguments : " + count);
+for(int i = 0 ; i < args.length ; i++)
+{
+if(count > 0 && count <= 2)
+System.out.println(args[i]);
+else
+throw new exception("Invalid Number of Line Arguments");
+}
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+Slip 24 :
+1) Write a Java program calledCozaLozaWoza which printsthe number 1 to 110, 11 numbers per line.
+The program shall print "Coza" in place of the numbers which are multiples of 3, "Loza" for multiples
+of 5, "Woza" for multiples of 7, "CozaLoza" for multiples of 3 and 5, and so on. The output shall look
+like: 1 2 Coza 4 Loza Coza Woza 8CozaLoza 11 Coza 13 Woza CozaLoza 16 17Coza 19 Loza CozaWoz
+import java.util.*;
+class CozaWozaLoza
+{
+public static void main(String args[])
+{
+String a = "Coza";
+String b = "Loza";
+String c = "Woza";
+int count = 1;
+int num = 0;
+for(int i = 1 ; i <= 11 ; i++)
+{
+for(int j = 1 ; j <= count; j ++)
+{
+while(count <= 11 && num<= 110)
+{
+count++;
+num++;
+if(num % 3 == 0)
+System.out.print(a+ " ");
+else if(num % 5 == 0)
+System.out.print(b + " ");
+else if(num % 7 == 0)
+System.out.print(c + " ");
+else
+System.out.print(num +" ");
+}
+count = 1;
+}
+System.out.println();
+}
+}
+}
+2) Write a Java AWT program to calculate area of Circle.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class areaCircle extends Frame implementsActionListener
+{
+Button b1;
+TextField t1;
+Label l1,l2;
+areaCircle()
+{
+setTitle("Area Of Circle");
+setVisible(true);
+setSize(400,400);
+setLayout(new FlowLayout());
+l1 = new Label("Enter Radius: ");
+l2 = new Label("");
+t1 = new TextField(10);
+b1 = new Button("Area");
+b1.addActionListener(this);
+add(l1);
+add(t1);
+add(b1);
+add(l2);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+double r = Double.valueOf(t1.getText());
+if(AE.getSource() == b1)
+{
+double area = 3.142 * r * r;
+l2.setText(String.valueOf(area));
+}
+}
+public static void main(String args[])
+{
+areaCircle a = newareaCircle();
+}
+}
+Slip 25 :
+1) Design a student class. A student has a name, stipend, and enrolment number. Write a default
+constructor and a constructorwith two parameters (name and enrolment number) and two methods.
+(a) To returnthe name and enrolment number. (b) A method that increases the student’s stipend.
+Write a smallprogram that tests yourclass.
+import java.util.*;
+class Student1
+{
+String name;
+int stipend,enrollno;
+Student1()
+{
+stipend = 100;
+enrollno = 1;
+name = "ABC";
+}
+Student1(String n , int s , int e)
+{
+name = n;
+stipend = s;
+enrollno = e;
+}
+public String first()
+{
+return "Name : " + name + "\n" + "Enrollment Number : " + String.valueOf(enrollno);
+}
+public void incr(int i)
+{
+System.out.println("Old Stipend : " + stipend+ "\nNew Stipend : " + (stipend+i));
+}
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int s,e;
+String n;
+System.out.println("Enter Name : ");
+n = sc.next();
+System.out.println("Enter Stipend : ");
+s = sc.nextInt();
+System.out.println("Enter Enrollment Number : ");
+e = sc.nextInt();
+System.out.println("Enter Amount : ");
+int a = sc.nextInt();
+Student1 s1 = new Student1(n , s , e);
+String a1 = s1.first();
+s1.incr(a);
+System.out.println(a1);
+}
+}
+2) Write a Java code to design thefollowing GUI and perform the arithmetic operation.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class arith extends Frame implements ItemListener
+{
+TextField t1,t2,t3;
+Label l1,l2,l3,l4;
+Choice c;
+arith()
+{
+setTitle("Arithmatic Operations");
+setVisible(true);
+setSize(300,300);
+setLayout(new GridBagLayout());
+GridBagConstraints gbc = new GridBagConstraints();
+l1 = new Label("Enter 1st no : ");
+gbc.gridx = 0;
+gbc.gridy = 0;
+add(l1,gbc);
+t1 = new TextField(10);
+gbc.gridx = 1;
+gbc.gridy = 0;
+add(t1,gbc);
+l2 = new Label("Enter 2nd no : ");
+gbc.gridx = 0;
+gbc.gridy = 1;
+add(l2,gbc);
+t2 = new TextField(10);
+gbc.gridx = 1;
+gbc.gridy = 1;
+add(t2,gbc);
+l3 = new Label("Result : ");
+gbc.gridx = 0;
+gbc.gridy = 2;
+add(l3,gbc);
+t3 = new TextField(10);
+gbc.gridx = 1;
+gbc.gridy = 2;
+t3.setEditable(false);
+add(t3,gbc);
+c = new Choice();
+c.add("Select Operation");
+c.add("+");
+c.add("-");
+c.add("*");
+c.add("/");
+gbc.gridx = 2;
+gbc.gridy = 2;
+c.addItemListener(this);
+add(c,gbc);
+l4 = new Label("0");
+gbc.gridx = 1;
+gbc.gridy = 3;
+add(l4,gbc);
+}
+public voiditemStateChanged(ItemEvent IE)
+{
+int a = Integer.valueOf(t1.getText());
+int b = Integer.valueOf(t2.getText());
+int result;
+if(c.getSelectedIndex() == 1)
+{
+result =a + b;
+t3.setText(String.valueOf(result));
+l4.setText(String.valueOf(result));
+}
+if(c.getSelectedIndex() == 2)
+{
+result =a - b;
+t3.setText(String.valueOf(result));
+l4.setText(String.valueOf(result));
+}
+if(c.getSelectedIndex() == 3)
+{
+result =a * b;
+t3.setText(String.valueOf(result));
+l4.setText(String.valueOf(result));
+}
+if(c.getSelectedIndex() == 4)
+{
+result =a / b;
+t3.setText(String.valueOf(result));
+l4.setText(String.valueOf(result));
+}
+}
+public static void main(String args[])
+{
+arith a = new arith();
+}
+}
+Slip 26 :
+1) Write a Java Program to create 5 threads using Runnable Interface.
+Filename : runthread.java
+class thread1 implementsRunnable
+{
+public voidrun()
+{
+for(int i = 0 ; i < 3; i++)
+{
+System.out.println("Thread 1");
+}
+}
+}
+class thread2 implementsRunnable
+{
+public voidrun()
+{
+for(int i = 0 ; i < 3; i++)
+{
+System.out.println("Thread 2");
+}
+}
+}
+class thread3 implementsRunnable
+{
+public voidrun()
+{
+for(int i = 0 ; i < 3; i++)
+{
+System.out.println("Thread 3");
+}
+}
+}
+class thread4 implementsRunnable
+{
+public voidrun()
+{
+for(int i = 0 ; i < 3; i++)
+{
+System.out.println("Thread 4");
+}
+}
+}
+class thread5 implementsRunnable
+{
+public voidrun()
+{
+for(int i = 0 ; i < 3; i++)
+{
+System.out.println("Thread 5");
+}
+}
+}
+class runthread
+{
+public static void main(String args[])
+{
+try
+{
+thread1 T1 = new thread1();
+Threadt1 = new Thread(T1);
+t1.start();
+t1.join();
+t1.sleep(200);
+thread2 T2 = new thread2();
+Thread t2 = new Thread(T2);
+t2.start();
+t2.join();
+t2.sleep(200);
+thread3 T3 = new thread3();
+Thread t3 = new Thread(T3);
+t3.start();
+t3.join();
+t3.sleep(200);
+thread4 T4 = new thread4();
+Thread t4 = new Thread(T4);
+t4.start();
+t4.join();
+t4.sleep(200);
+thread5 T5 = new thread5();
+Thread t5 = new Thread(T5);
+t5.start();
+t5.join();
+t5.sleep(200);
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+2) Write a Java program to read thestudent data from user and store it in the file.
+import java.util.*;
+import java.io.*;
+class readdata
+{
+public static void main(String args[])
+{
+try
+{
+Scanner sc = new Scanner(System.in);
+String name;
+int rollno;
+System.out.println("Enter Name : ");
+name = sc.next();
+System.out.println("Enter Roll No : ");
+rollno = sc.nextInt();
+String r = String.valueOf(rollno);
+FileWriter fw = new FileWriter("student.txt");
+fw.write(name+" ");
+fw.write(r);
+fw.close();
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+Slip 27 :
+1) Write a Java program to create an interface Area with one methodAreaCompute() with 2 float
+parameters. Design 2 classes Rectangle and Circle implementing the Area Interface. Input should be
+taken from the user using Buffered Reader class.
+Filename : Circle1.java
+import java.util.*;
+import java.io.*;
+interface Area
+{
+public voidAreaCompute(float l , float b);
+}
+class Rectangle implements Area
+{
+public voidAreaCompute(float l , float b)
+{
+float area = l * b;
+System.out.println("Area of Rectangle : " + area);
+}
+}
+class Circle1 implements Area
+{
+public void AreaCompute(float l , float b)
+{
+float area = 3.142f * l * l ;
+System.out.println("Area of Circle : " + area);
+}
+public static void main(String args[])
+{
+try
+{
+InputStreamReader isr = new InputStreamReader(System.in);
+BufferedReader br = new BufferedReader(isr);
+System.out.println("Enter Length : ");
+float l = Float.valueOf(br.readLine());
+System.out.println("Enter Breadth : ");
+float b = Float.valueOf(br.readLine());
+Rectangle r = new Rectangle();
+r.AreaCompute(l,b);
+System.out.println("Enter Radius : ");
+float radius = Float.valueOf(br.readLine());
+Circle1 c = new Circle1();
+c.AreaCompute(radius,0f);
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+2) Develop a GUI application using Java AWT to present a set of stationary items (combo box) to the
+user. When the user clicks on a particular stationary item, display the price of the item.
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class stationary extends Frame implements ItemListener
+{
+Label l;
+Choice c;
+stationary()
+{
+setTitle("Stationary Items");
+setVisible(true);
+setSize(500,500);
+setLayout(new FlowLayout());
+l = new Label("Price :");
+c = new Choice();
+c.add("Select Item");
+c.add("Ruler");
+c.add("Pencil");
+c.add("Pen");
+c.add("Eraser");
+c.add("NoteBook");
+c.addItemListener(this);
+add(c);
+add(l);
+}
+public voiditemStateChanged(ItemEvent IE)
+{
+if(c.getSelectedIndex() == 1)
+l.setText("Price is : 10");
+if(c.getSelectedIndex() == 2)
+l.setText("Price is : 12");
+if(c.getSelectedIndex() == 3)
+l.setText("Price is : 20");
+if(c.getSelectedIndex() == 4)
+l.setText("Price is : 5");
+if(c.getSelectedIndex() == 5)
+l.setText("Price is : 32");
+}
+public static void main(String args[])
+{
+stationary s = new stationary();
+}
+}
+Slip 28 :
+1) Write a java program for swapping of two n dimensional arrays. Accept thearray element from
+user.
+import java.util.*;
+class swap
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+int a[][] = new int[2][2];
+int b[][] = new int[2][2];
+int i,j,temp;
+System.out.println("Enter 4 numbers for 1st Array : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j < 2 ;j++)
+{
+a[i][j] = sc.nextInt();
+}
+}
+System.out.println("Enter 4 numbers for 2nd Array : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j< 2 ; j++)
+{
+b[i][j] = sc.nextInt();
+}
+}
+System.out.println("Arrays Before Swapping : ");
+System.out.print("Array 1 : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j< 2 ; j++)
+{
+System.out.print(a[i][j] +" ");
+}
+}
+System.out.print("\nArray 2 : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j< 2 ; j++)
+{
+System.out.print(b[i][j] +" ");
+}
+}
+for(i = 0 ; i < 2 ; i++)
+{
+for( j = 0 ; j <2 ;j++)
+{
+temp = a[i][j];
+a[i][j] = b[i][j];
+b[i][j] = temp;
+}
+}
+System.out.println("\nArrays After Swapping");
+System.out.print("Array 1 : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j< 2 ; j++)
+{
+System.out.print(a[i][j] +" ");
+}
+}
+System.out.print("\nArray 2 : ");
+for(i = 0 ; i < 2 ; i++)
+{
+for(j = 0 ; j< 2 ; j++)
+{
+System.out.print(b[i][j] +" ");
+}
+}
+}
+}
+2) Write a Java AWT code to calculate the factorial of a numberfor the following
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+class factorial2 extends Frame implements ActionListener
+{
+Button b1,b2;
+TextField t;
+Label l1,l2,l3;
+factorial2()
+{
+setTitle("Factorial");
+setVisible(true);
+setSize(300,200);
+setLayout(new GridLayout(3,2));
+l1 = new Label("Enter A Number: ");
+l2 = new Label("The Factorial is:");
+l3 = new Label("");
+t = new TextField(10);
+b1 = new Button("Find");
+b2 = new Button("Clear");
+b1.addActionListener(this);
+b2.addActionListener(this);
+add(l1);
+add(t);
+add(l2);
+add(l3);
+add(b1);
+add(b2);
+}
+public voidactionPerformed(ActionEvent AE)
+{
+if(AE.getSource() == b1)
+{
+int fact = 1;
+String n = t.getText();
+int number = Integer.valueOf(n);
+for(int i = number ; i >= 1 ; i--)
+{
+fact = fact * i;
+}
+String n2 = String.valueOf(fact);
+l3.setText(n2);
+}
+if(AE.getSource() == b2)
+{
+t.setText(" ");
+l3.setText("");
+}
+}
+public static void main(String args[])
+{
+factorial2 f = new factorial2();
+}
+}
+Slip 29 :
+1) Write a Java Program using AWT Program to design the calculator (Same as Practicals)
+import java.awt.*;
+import java.awt.event.*;
+public class calculator1 implements ActionListener
+{
+int c,n;
+String s1,s2,s3,s4,s5;
+Frame f;
+Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17;
+Panel p;
+TextField tf;
+GridLayout g;
+calculator1()
+{
+f = new Frame("My calculator");
+p = new Panel();
+f.setLayout(new FlowLayout());
+b1 = new Button("0");
+b1.addActionListener(this);
+b2 = new Button("1");
+b2.addActionListener(this);
+b3 = new Button("2");
+b3.addActionListener(this);
+b4 = new Button("3");
+b4.addActionListener(this);
+b5 = new Button("4");
+b5.addActionListener(this);
+b6 = new Button("5");
+b6.addActionListener(this);
+b7 = new Button("6");
+b7.addActionListener(this);
+b8 = new Button("7");
+b8.addActionListener(this);
+b9 = new Button("8");
+b9.addActionListener(this);
+b10 = new Button("9");
+b10.addActionListener(this);
+b11 = new Button("+");
+b11.addActionListener(this);
+b12 = new Button("-");
+b12.addActionListener(this);
+b13 = new Button("*");
+b13.addActionListener(this);
+b14 = new Button("/");
+b14.addActionListener(this);
+b15 = new Button("%");
+b15.addActionListener(this);
+b16 = new Button("=");
+b16.addActionListener(this);
+b17 = new Button("C");
+b17.addActionListener(this);
+tf = new TextField(20);
+f.add(tf);
+g = new GridLayout(4,4,10,20);
+p.setLayout(g);
+p.add(b1);p.add(b2);p.add(b3);p.add(b4);p.add(b5);p.add(b6);p.add(b7);p.add(b8);p.add(b9);
+p.add(b10);p.add(b11);p.add(b12);p.add(b13);p.add(b14);p.add(b15);p.add(b16);p.add(b17);
+f.add(p);
+f.setSize(300,300);
+f.setVisible(true);
+}
+public void actionPerformed(ActionEvent e)
+{
+if(e.getSource()==b1)
+{
+s3 = tf.getText();
+s4 = "0";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b2)
+{
+s3 = tf.getText();
+s4 = "1";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b3)
+{
+s3 = tf.getText();
+s4 = "2";
+s5 = s3+s4;
+tf.setText(s5);
+}if(e.getSource()==b4)
+{
+s3 = tf.getText();
+s4 = "3";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b5)
+{
+s3 = tf.getText();
+s4 = "4";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b6)
+{
+s3 = tf.getText();
+s4 = "5";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b7)
+{
+s3 = tf.getText();
+s4 = "6";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b8)
+{
+s3 = tf.getText();
+s4 = "7";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b9)
+{
+s3 = tf.getText();
+s4 = "8";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b10)
+{
+s3 = tf.getText();
+s4 = "9";
+s5 = s3+s4;
+tf.setText(s5);
+}
+if(e.getSource()==b11)
+{
+s1 = tf.getText();
+tf.setText("");
+c=1;
+}
+if(e.getSource()==b12)
+{
+s1 = tf.getText();
+tf.setText("");
+c=2;
+}
+if(e.getSource()==b13)
+{
+s1 = tf.getText();
+tf.setText("");
+c=3;
+}
+if(e.getSource()==b14)
+{
+s1 = tf.getText();
+tf.setText("");
+c=4;
+}
+if(e.getSource()==b15)
+{
+s1 = tf.getText();
+tf.setText("");
+c=5;
+}
+if(e.getSource()==b16)
+{
+s2 = tf.getText();
+if(c==1)
+{
+n= Integer.parseInt(s1)+Integer.parseInt(s2);
+tf.setText(String.valueOf(n));
+}
+else
+if(c==2)
+{
+n= Integer.parseInt(s1)-Integer.parseInt(s2);
+tf.setText(String.valueOf(n));
+}
+else
+if(c==3)
+{
+n= Integer.parseInt(s1)*Integer.parseInt(s2);
+tf.setText(String.valueOf(n));
+}
+if(c==4)
+{
+try
+{
+int p=Integer.parseInt(s2);
+if(p!=0)
+{
+n = Integer.parseInt(s1)/Integer.parseInt(s2);
+tf.setText(String.valueOf(n));
+}
+else
+tf.setText("infinite");
+}
+catch(Exception i){}
+}
+if(c==5)
+{
+n= Integer.parseInt(s1)%Integer.parseInt(s2);
+tf.setText(String.valueOf(n));
+}
+}
+if(e.getSource()==b17)
+{
+tf.setText("");
+}
+}
+public staticvoid main(String[] abc)
+{
+calculator1 v = new calculator1();
+}
+}
